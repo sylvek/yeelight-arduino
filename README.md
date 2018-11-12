@@ -21,7 +21,7 @@ lookup your bulb(s)
 yeelight->lookup();
 ```
 
-On the loop(), listen...
+And listen...
 
 ```
 void loop() {
@@ -31,3 +31,7 @@ void loop() {
   }
 }
 ```
+
+## Battle tested?
+
+I've tested with my ESP32 device and only with one Bulb.
