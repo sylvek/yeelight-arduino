@@ -1,6 +1,10 @@
 # yeelight-arduino
 Arduino lib. to control Yeelight Bulb
 
+[github.com/sylvek/yeelight-arduino](https://github.com/sylvek/yeelight-arduino)
+
+[Yeelight documentation](https://www.yeelight.com/download/Yeelight_Inter-Operation_Spec.pdf)
+
 ## How to use ?
 
 Add yeelight.h and yeelight.cpp to your Arduino project.
