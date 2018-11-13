@@ -1,8 +1,10 @@
 #include <WiFi.h>
+#include <ArduinoJson.h>
 #include "yeelight.h"
 
 #define LED 2
 
+StaticJsonBuffer<200> jsonBuffer;
 Yeelight* yeelight;
 
 void setup() {
@@ -19,9 +21,18 @@ void setup() {
 
 void loop() {
   if (yeelight->feedback()) {
-    digitalWrite(LED, HIGH);
+    Serial.print("device: ");
     Serial.println(yeelight->getLocation());
-    Serial.println(yeelight->sendCommand("set_power", "[\"on\", \"smooth\", 500]"));
+
+    if (!yeelight->isPowered()) {
+      digitalWrite(LED, HIGH);
+      Serial.println(yeelight->sendCommand("set_power", "[\"on\", \"smooth\", 500]"));
+    }
+
+    JsonObject& root = jsonBuffer.parseObject(yeelight->sendCommand("get_prop", "[\"power\"]"));
+    const char* state = root["result"][0];
+    Serial.print("- power is: ");
+    Serial.println(state);
   }
 }
 

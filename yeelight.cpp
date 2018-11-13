@@ -105,10 +105,10 @@ String Yeelight::sendCommand(String method, String params)
   }
 
   String result = "";
-  while(_client.available()) {
+  while (_client.connected()) {
     result = _client.readStringUntil('\r');
+    _client.stop();
   }
-
   return result;
 }
 
