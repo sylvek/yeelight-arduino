@@ -13,7 +13,7 @@ void setup() {
   digitalWrite (LED, LOW);
   Serial.println("Starting...");
 
-  connectToWiFi("ssid", "password");
+  connectToWiFi("***", "***");
 
   yeelight = new Yeelight();
   yeelight->lookup();
@@ -27,12 +27,16 @@ void loop() {
     if (!yeelight->isPowered()) {
       digitalWrite(LED, HIGH);
       Serial.println(yeelight->sendCommand("set_power", "[\"on\", \"smooth\", 500]"));
+      // Serial.println(yeelight->sendCommand("set_name", "[\"tv\"]"));
     }
 
-    JsonObject& root = jsonBuffer.parseObject(yeelight->sendCommand("get_prop", "[\"power\"]"));
+    JsonObject& root = jsonBuffer.parseObject(yeelight->sendCommand("get_prop", "[\"power\", \"name\"]"));
     const char* state = root["result"][0];
+    const char* name = root["result"][1];
     Serial.print("- power is: ");
     Serial.println(state);
+    Serial.print("- name is: ");
+    Serial.println(name);
   }
 }
 
