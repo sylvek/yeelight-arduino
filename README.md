@@ -36,6 +36,10 @@ void loop() {
 }
 ```
 
+## Warn :
+
+If you use it dont use the last version of ArduinoJson Lib , 
+
 ## Battle tested?
 
 I've tested with my ESP32 device and only with one Bulb.
