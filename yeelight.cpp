@@ -14,6 +14,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 smaucourt@gmail.com - 11/11/2018
 */
+
 #ifdef ESP32
   #include <WiFi.h>
 #else
