@@ -15,7 +15,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 smaucourt@gmail.com - 11/11/2018
 */
 
-#include <WiFi.h>
+#ifdef ESP32
+  #include <WiFi.h>
+#else
+  #include <ESP8266WiFi.h>
+#endif
+
 #include <WiFiUdp.h>
 #include "yeelight.h"
 
@@ -41,8 +46,13 @@ Yeelight::~Yeelight()
 
 void Yeelight::lookup()
 {
-  _udp.beginMulticast(_ipMulti, 1982);
-  _udp.beginMulticastPacket();
+  #ifdef ESP32
+    _udp.beginMulticast(_ipMulti, 1982);
+    _udp.beginMulticastPacket();
+  #else
+    _udp.beginMulticast(WiFi.localIP(), _ipMulti, 1982);
+    _udp.beginPacketMulticast(_ipMulti, 1982, WiFi.localIP());
+  #endif
   _udp.print("M-SEARCH * HTTP/1.1\r\nHOST: 239.255.255.250:1982\r\nMAN: \"ssdp:discover\"\r\nST: wifi_bulb");
   _udp.endPacket();
   _udp.begin(1982);
