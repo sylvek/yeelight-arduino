@@ -38,7 +38,7 @@ void loop() {
 
 ## Warn :
 
-If you use yeelight_remote.ino, dont use the last version of ArduinoJson Lib , use older than 5.0 
+~~If you use yeelight_remote.ino, dont use the last version of ArduinoJson Lib , use older than 5.0~~ Updated to 6.16.1
 
 ## Battle tested?
 
