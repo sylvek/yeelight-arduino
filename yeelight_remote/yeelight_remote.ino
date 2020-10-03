@@ -8,7 +8,7 @@
 
 #define LED 2
 
-StaticJsonBuffer<200> jsonBuffer;
+StaticJsonDocument<200> jsonBuffer;
 Yeelight* yeelight;
 
 void setup() {
@@ -33,8 +33,8 @@ void loop() {
       Serial.println(yeelight->sendCommand("set_power", "[\"on\", \"smooth\", 500]"));
       // Serial.println(yeelight->sendCommand("set_name", "[\"tv\"]"));
     }
-
-    JsonObject& root = jsonBuffer.parseObject(yeelight->sendCommand("get_prop", "[\"power\", \"name\"]"));
+    deserializeJson(jsonBuffer, yeelight->sendCommand("get_prop", "[\"power\", \"name\"]"));
+    JsonObject root = jsonBuffer.as<JsonObject>();
     const char* state = root["result"][0];
     const char* name = root["result"][1];
     Serial.print("- power is: ");
