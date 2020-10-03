@@ -38,8 +38,9 @@ void loop() {
 
 ## Warn :
 
-If you use yeelight_remote.ino, dont use the last version of ArduinoJson Lib , use older than 5.0 
+~~If you use yeelight_remote.ino, dont use the last version of ArduinoJson Lib , use older than 5.0~~ Updated to 6.16.1
 
 ## Battle tested?
 
 I've tested with my ESP32 device and only with one Bulb.
+Tested with ESP8266(Wemos D1 Mini) and with only 1 bulb.
