@@ -43,3 +43,4 @@ void loop() {
 ## Battle tested?
 
 I've tested with my ESP32 device and only with one Bulb.
+Tested with ESP8266(Wemos D1 Mini) and with only 1 bulb.
